@@ -138,5 +138,63 @@ public class Numbers {
         }
         return sb.toString();
     }
+    
+    @WebMethod(operationName = "RandomNumberRange")
+    //Random numbers
+    public String randomNumbers(@WebParam(name = "low")int low,@WebParam(name = "high")int high,@WebParam(name = "n")int n)
+    {
+        Random rand=new Random();
+        StringBuilder sb=new StringBuilder();
+        for(int x=0;x<=n;x++)
+        {
+            int randomNum = rand.nextInt((high - low) + 1) + low;
+            sb.append(randomNum+"\n");
+        }
+        //System.out.println(sb);
+        return sb.toString();
+    }
+    
+    
+    @WebMethod(operationName = "powerOfTwoRange")
+    //Powers of 2
+    public String powersofTwo(@WebParam(name = "low")int low,@WebParam(name = "high")int high)
+    {
+        int powof2[]=new int[30];
+        for(int x=0;x<powof2.length;x++)
+        {
+            powof2[x]=(int)Math.pow(2,x);
+        }
+        StringBuilder sb=new StringBuilder();
+        for(int x=low;x<=high;x++)
+        {
+            for(int y=0;y<30;y++)
+            {
+                if(powof2[y]==x)
+                {
+                    sb.append(x+"\n");
+                    break;
+                }
+            }
+        }
+        return sb.toString();
+    }
+    
+    
+    @WebMethod(operationName = "evenRange")
+    //Range Even Numbers
+    public String evenRange(@WebParam(name = "low")int low,@WebParam(name = "high")int high)
+    {
+        StringBuilder sb=new StringBuilder();
+        int count=0;
+        while (low <= high) 
+        {
+            if(low%2==0)
+                sb.append(low+"\n");
+            ++low;
+        }
+        //System.out.println(sb);
+        return sb.toString();
+    }
+
 
 }
