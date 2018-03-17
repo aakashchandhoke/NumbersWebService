@@ -5,7 +5,7 @@
  */
 
 package com.Numbers;
-
+import java.util.*;
 import javax.jws.WebService;
 import javax.jws.WebMethod;
 import javax.jws.WebParam;
@@ -77,6 +77,45 @@ public class Numbers {
                 sb.append(low+"\n");
             ++low;
         }
+        return sb.toString();
+    }
+    
+    
+    private static ArrayList<Integer> fibonacci(int n)
+    {
+        ArrayList<Integer> ar=new ArrayList<>();
+        int a=0,b=1;
+        ar.add(a);
+        ar.add(b);
+        int c=a+b;
+        while(c<=n)
+        {
+            c=a+b;
+            a=b;
+            b=c;
+            ar.add(a);
+        }
+        
+        return ar;
+    }
+    
+    @WebMethod(operationName = "fibonacciRange")
+    //Fibonacci numbers
+    public String fibonacciRange(@WebParam(name = "low")int low,@WebParam(name = "high")int high)
+    {
+        ArrayList<Integer> ar=fibonacci(high);
+        System.out.println(ar);
+        StringBuilder sb=new StringBuilder();
+        int x=low;
+        while(!ar.contains(x))
+            x++;
+        int index=ar.indexOf(x);
+        while(index<ar.size())
+        {
+            sb.append(ar.get(index)+"\n");
+            index++;
+        }
+        //System.out.println(sb);
         return sb.toString();
     }
 }
