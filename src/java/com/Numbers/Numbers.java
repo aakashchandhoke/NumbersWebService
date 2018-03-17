@@ -196,5 +196,44 @@ public class Numbers {
         return sb.toString();
     }
 
+    
+    @WebMethod(operationName = "oddRange")
+    //Range Odd Numbers
+    public String oddRange(@WebParam(name = "low")int low,@WebParam(name = "high")int high)
+    {
+        StringBuilder sb=new StringBuilder();
+        int count=0;
+        while (low <= high) 
+        {
+            if(low%2!=0)
+                sb.append(low+"\n");
+            ++low;
+        }
+        //System.out.println(sb);
+        return sb.toString();
+    }
+    
+    
+    @WebMethod(operationName = "palindromeRange")
+    //Range Palindrome Numbers
+    public String palindromeRange(@WebParam(name = "low")int low,@WebParam(name = "high")int high)
+    {
+        StringBuilder sb=new StringBuilder();
+        int count=0;
+        while (low <= high) 
+        {
+            if(checkPalindromeNumber(low))
+                sb.append(low+"\n");
+            ++low;
+        }
+        //System.out.println(sb);
+        return sb.toString();
+    }
+
+    private static boolean checkPalindromeNumber(int n)
+    {
+        return String.valueOf(n).equals(new StringBuilder(String.valueOf(n)).reverse().toString());
+    }
+
 
 }
