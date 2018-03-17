@@ -118,4 +118,25 @@ public class Numbers {
         //System.out.println(sb);
         return sb.toString();
     }
+    
+    @WebMethod(operationName = "perfectCubeRange")
+    //Perfect Cubes
+    public String perfectCubeRange(@WebParam(name = "low")int low,@WebParam(name = "high")int high)
+    {
+        StringBuilder sb=new StringBuilder();
+        for(int x=low;x<=high;x++)
+        {
+            double d=Math.cbrt(x);
+            int d1=(int)Math.cbrt(x);
+            if(d-d1>0)
+                continue;
+            else
+            {
+                sb.append(x);
+                sb.append("\n");
+            }
+        }
+        return sb.toString();
+    }
+
 }
