@@ -17,13 +17,6 @@ import javax.jws.WebParam;
 @WebService(serviceName = "Numbers")
 public class Numbers {
 
-    /**
-     * This is a sample web service operation
-     */
-    @WebMethod(operationName = "hello")
-    public String hello(@WebParam(name = "name") String txt) {
-        return "Hello " + txt + " !";
-    }
     @WebMethod(operationName = "prime")
     //Range Prime Numbers
     public String primeRange(@WebParam(name = "low")int low,@WebParam(name = "high")int high)
@@ -52,24 +45,9 @@ public class Numbers {
         return flag;
     }
     
-     @WebMethod(operationName = "composite")
-    //Composite Range
-    public String compositeRange(@WebParam(name = "low")int low,@WebParam(name = "high")int high)
-    {
-        StringBuilder sb=new StringBuilder();
-        while (low <= high) 
-        {
-            if(!checkPrimeNumber(low))
-                sb.append(low+"\n");
-            ++low;
-        }
-        //System.out.println(sb);
-        return sb.toString();
-    }
-    
-    @WebMethod(operationName = "perfectSquare")
+     @WebMethod(operationName = "perfectSquare")
     //Perfect Square
-    public static StringBuilder perfectSquaresRange(@WebParam(name = "low")int low,@WebParam(name = "high")int high)
+    public String perfectSquaresRange(@WebParam(name = "low")int low,@WebParam(name = "high")int high)
     {
         StringBuilder sb=new StringBuilder();
         int count=0;
@@ -85,6 +63,20 @@ public class Numbers {
                 sb.append("\n");
             }
         }
-        return sb;
+        return sb.toString();
+    }
+    
+     @WebMethod(operationName = "composite")
+    //Composite Range
+    public String compositeRange(@WebParam(name = "low")int low,@WebParam(name = "high")int high)
+    {
+        StringBuilder sb=new StringBuilder();
+        while (low <= high) 
+        {
+            if(!checkPrimeNumber(low))
+                sb.append(low+"\n");
+            ++low;
+        }
+        return sb.toString();
     }
 }
