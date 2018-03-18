@@ -34,6 +34,8 @@ public class Numbers {
     //Checking PrimeNumber
     private boolean checkPrimeNumber(int num) 
     {
+        if(num==1)
+            return false;
         boolean flag = true;
         for(int i = 2; i <= num/2; ++i) {
 
@@ -88,14 +90,14 @@ public class Numbers {
         ar.add(a);
         ar.add(b);
         int c=a+b;
-        while(c<=n)
+        while((c=a+b)<=n)
         {
-            c=a+b;
+            ar.add(c);
+            //=a+b;
             a=b;
-            b=c;
-            ar.add(a);
+            b=c; 
         }
-        
+        //System.out.println(ar);
         return ar;
     }
     
